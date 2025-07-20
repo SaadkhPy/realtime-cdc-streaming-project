@@ -1,0 +1,18 @@
+networks:
+  shared-net:
+    external: true
+
+volumes:
+  postgres-data:
+
+services:
+
+    db:
+      env_file: env/postgres.env
+      extends: 
+        file: services/postgres.yml
+        service: postgres
+      networks:
+        - shared-net
+      volumes:
+        - ./init/init-pg-dbz-replica.sql:/docker-entrypoint-initdb.d/init-pg-dbz-replica.sql:ro

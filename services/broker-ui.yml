@@ -1,0 +1,13 @@
+services:
+
+  broker-ui:
+    image: provectuslabs/kafka-ui:v0.7.2
+    container_name: broker-ui
+    hostname: broker-ui
+    ports:
+      - "${BROKER_UI_PORT}:8080"
+    depends_on:
+      broker:
+        condition: service_healthy
+      # zookeeper:
+      #   condition: service_healthy

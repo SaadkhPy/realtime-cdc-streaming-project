@@ -1,0 +1,20 @@
+{
+  "name": "orderevents-connector",
+  "config": {
+    "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
+    "tasks.max": "1",
+    "database.hostname": "db",
+    "database.port": "5432",
+    "database.user": "myuser",
+    "database.password": "mypass",
+    "database.dbname": "orderevents",
+    "database.server.name": "orderevents_server",
+    "plugin.name": "pgoutput",
+    "slot.name": "orderevents_slot",
+    "publication.name": "orderevents_pub",
+    "topic.prefix": "orderevents",
+    "database.history.kafka.bootstrap.servers": "kafka:9092",
+    "database.history.kafka.topic": "schema-changes.orders"
+  }
+}
+

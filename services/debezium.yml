@@ -1,0 +1,23 @@
+services:
+
+    debezium:
+      image: debezium/connect:2.5
+      hostname: debezium
+      container_name: debezium
+      ports:
+        - "${REST_API_PORT}:8083"      # The default REST API port for Kafka Connect (Debezium Connect)
+        - "${JVX_PORT}:8778"           # JMX port (Java Management Extensions) 
+      depends_on:
+        broker:
+            condition: service_healthy
+      volumes:
+        - debezium-data:/kafka/data
+        - debezium-logs:/kafka/logs
+        - debezium-config:/kafka/config
+        - ../debezium-plugins:/debezium-plugins
+      healthcheck:
+        test: ["CMD-SHELL", "curl -f http://localhost:8083 || exit 1"]
+        interval: 30s
+        timeout: 10s
+        retries: 5
+        start_period: 60s

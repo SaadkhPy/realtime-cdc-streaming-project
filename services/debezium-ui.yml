@@ -1,0 +1,11 @@
+services:
+
+  debezium-ui:
+    image: debezium/debezium-ui:2.5
+    container_name: debezium-ui
+    hostname: debezium-ui
+    depends_on:
+      debezium:
+        condition: service_healthy
+    ports:
+      - '${DEBEZIUM_UI_PORT}:8080'

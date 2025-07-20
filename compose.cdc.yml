@@ -1,0 +1,43 @@
+networks:
+  shared-net:
+    external: true
+
+volumes:
+  kafka-data:
+  debezium-data:
+  debezium-logs:
+  debezium-config:
+
+services:
+
+    broker:
+      env_file: env/broker.env
+      extends: 
+        file: services/broker.yml
+        service: broker
+      networks:
+        - shared-net
+
+    broker-ui:
+      env_file: env/broker-ui.env
+      extends: 
+        file: services/broker-ui.yml
+        service: broker-ui
+      networks:
+        - shared-net
+
+    debezium:
+      env_file: env/debezium.env
+      extends: 
+        file: services/debezium.yml
+        service: debezium
+      networks:
+        - shared-net
+
+    debezium-ui:
+      env_file: env/debezium-ui.env
+      extends: 
+        file: services/debezium-ui.yml
+        service: debezium-ui
+      networks:
+        - shared-net
