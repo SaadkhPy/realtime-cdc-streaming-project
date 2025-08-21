@@ -8,3 +8,11 @@ wheels/
 
 # Virtual environments
 .venv
+.env
+env
+
+# git rm --cached file_name
+# git rm --cached -r directory_name
+
+# Then commit the change:
+# git commit -m "Removed file from git tracking"
