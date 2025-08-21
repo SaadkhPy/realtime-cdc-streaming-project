@@ -1,6 +1,6 @@
-==================================================
-1. Register Debezium Connectors for DBoth atabases
-==================================================
+# ==================================================
+# 1. Register Debezium Connectors for DBoth atabases
+# ==================================================
 
 ## Register the 'userevents-connector'
 curl -X POST http://localhost:8083/connectors \
